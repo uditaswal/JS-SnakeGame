@@ -85,7 +85,7 @@ function updateMuteButtonImg(isMuted) {
 let imgContainer = document.getElementById("imgContainer");
 let ball;
 let step = 5;
-let snakeSpeed = 10; // in milliseconds
+let snakeSpeed = 20; // in milliseconds
 let score = 0;
 let direction;
 let duration = 0;
