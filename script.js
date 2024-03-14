@@ -446,6 +446,44 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+// Function to handle touch events for direction control
+function handleTouchStart(event) {
+  const touchStartX = event.touches[0].clientX;
+  const touchStartY = event.touches[0].clientY;
+  
+  document.addEventListener('touchmove', function handleTouchMove(event) {
+    const touchEndX = event.touches[0].clientX;
+    const touchEndY = event.touches[0].clientY;
+    
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    
+    // Determine the direction based on the swipe gesture
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Horizontal swipe
+      if (deltaX > 0) {
+        direction = 'right';
+      } else {
+        direction = 'left';
+      }
+    } else {
+      // Vertical swipe
+      if (deltaY > 0) {
+        direction = 'down';
+      } else {
+        direction = 'up';
+      }
+    }
+    
+    // Prevent scrolling while swiping
+    event.preventDefault();
+  });
+}
+
+// Add touch event listeners
+document.addEventListener('touchstart', handleTouchStart, false);
+
+
 // Page specifics:
 if (window.location.pathname.includes("gamePage.html") || window.location.pathname.includes("gameOver.html") || window.location.pathname.includes("index.html")) {
   document.getElementById("soundImg").addEventListener("click", toggleMute);
