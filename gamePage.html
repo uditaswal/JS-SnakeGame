@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="img/thumbnail.png" />
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap"
+      rel="stylesheet"
+    />
+    <title>Snake Game</title>
+  </head>
+  <body>
+    
+    <div class="buttons">
+      <a href="pausePage.html"><button type="button" id="pausebtn">Pause</button></a>
+      <button type="button"  id="resetbtn" onclick="resetGame()">Reset</button>
+      <button type="button" id="scorebtn">Score: 0</button>
+      <button type="button" id="timer">0 : 00 : 00</button>
+        <img id="soundImg" src="img/mute-button.png" onclick="gameAudio.pause()"  alt="" />
+    </div>
+    <div class="imgContainer" id="imgContainer"></div>
+ </body> 
+</html>
+
+<!--  onclick="toggleMuteBTN()" -->

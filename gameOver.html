@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="img/thumbnail.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet" />
+  <script src="script.js" defer></script>
+  <title>Snake Game</title>
+</head>
+
+<body>
+  <div class="imgContainer" id="startPage-imgContainer">
+    <img id="soundImg" src="img/mute-button.png" onclick="gameAudio.pause()"  alt="" />
+
+    <h1 class="Title">Game Over</h1>
+    <div class="gameOver-buttons">
+      <button type="button" class="gameOver-btn" id="scorebtn">
+        Score: 0
+      </button>
+      <button type="button" class="gameOver-btn" id="highScorebtn">
+        High Score: 0
+      </button>
+      <br>
+      <button type="button" class="gameOver-btn" id="timer">
+        Timer: 0 : 00 : 00
+      </button>
+      <br />
+      <a href="gamePage.html"><button type="button" class="gameOver-btn" id="resetbtn" onclick="resetGame()">
+          Restart
+        </button>
+      </a>
+
+    </div>
+  </div>
+</body>
+
+</html>

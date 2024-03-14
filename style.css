@@ -1,0 +1,155 @@
+body {
+  background-color: #9bba5a;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: "Madimi One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.imgContainer {
+  border: solid 4px rgba(0, 0, 0, 0.75);
+  width: 80rem;
+  height: 30rem;
+  display: flex;
+  position: relative;
+  margin: 10% 10% 10% 10%;
+  text-align: center;
+}
+
+#startPage-imgContainer {
+  justify-content: center;
+  align-items: top;
+  text-align: center;
+  font-size: 5vh;
+}
+
+#pausePage-imgContainer {
+  justify-content: center;
+  align-items: top;
+  text-align: center;
+  text-align: center;
+  font-size: 5vh;
+}
+
+.buttons {
+  display: flex; /* Use flexbox to arrange items in a row */
+  gap: 10px; /* Add a small gap between buttons */
+  align-items: center; /* Center items vertically */
+  position: absolute;
+  top: 10px;
+}
+
+.startPage-buttons {
+  position: absolute;
+  top: 15rem;
+}
+
+#startPage-imgContainer #soundImg{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: none;
+    width: 30px;
+    height: 20px;
+}
+
+.gameOver-buttons {
+  position: absolute;
+  top: 10rem;
+}
+
+.startPage-btn,
+.pausePage-btn {
+  width: 15rem;
+  height: 3rem;
+  font-family: "Madimi One", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.Title {
+  text-align: center;
+  word-wrap: break-word;
+  justify-content: center;
+  align-items: center;
+}
+
+.pausePage-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+button {
+  color: white;
+  background-color: rgb(0, 0, 255);
+  border: none;
+  padding: 10px;
+  border-radius: 20%;
+}
+
+button:hover {
+  background-color: rgb(0, 153, 255);
+}
+
+button:active {
+  font-weight: bold;
+}
+
+#soundImg{
+  background-color: none;
+  width: 30px;
+  height: auto;
+}
+
+@media screen and (max-width: 400px) {
+  .imgContainer {
+    border: solid 2px black;
+    width: 80rem;
+    height: 30rem;
+    display: flex;
+    position: relative;
+    margin: 20% 10% 10% 10%;
+  }
+}
+@media screen and (max-width: 200px) {
+  .imgContainer {
+    border: solid 2px black;
+    width: 80rem;
+    height: 30rem;
+    display: flex;
+    position: relative;
+    margin: 120% 10% 10% 10%;
+  }
+  .buttons {
+    position: absolute;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 10px;
+  }
+}
+@media screen and (max-width: 130px) {
+  .imgContainer {
+    border: solid 2px black;
+    width: 80rem;
+    height: 30rem;
+    display: flex;
+    position: relative;
+    margin: 300% 10% 10% 10%;
+  }
+  .buttons {
+    position: absolute;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
