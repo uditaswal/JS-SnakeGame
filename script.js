@@ -4,10 +4,10 @@ Remove head when it reloading the page
 timer going up in pause page
 
 Notes:
-Need to upload the project to github
-Need to host it on a site
 
 Completed
+Need to upload the project to github
+Need to host it on a site
 Need to make gameover of snake eats itself
 and maintain high score for each profile
 Need to add music
@@ -45,7 +45,7 @@ function pauseAudio(audioName) {
 function toggleMute() {
 
   // Toggle the mute state
-  const newMuteState = !isMuted;
+  const newMuteState = localStorage.getItem("isMuted") !== "true";
 
   localStorage.setItem("isMuted", newMuteState);
 
@@ -85,10 +85,9 @@ function updateMuteButtonImg(isMuted) {
 let imgContainer = document.getElementById("imgContainer");
 let ball;
 let step = 5;
-let snakeSpeed = 20; // in milliseconds
+let snakeSpeed = 10; // in milliseconds
 let score = 0;
 let direction;
-let duration = 0;
 let gameInterval;
 let timerInterval;
 let isGameRunning = false;
@@ -185,8 +184,8 @@ function createHead() {
       head.alt = "snake";
       head.style.top = 5 + "px";
       head.style.left = 5 + "px";
-      head.style.height = "40px";
-      head.style.width = "40px";
+      head.style.height = "6vh";
+      head.style.width = "6vh";
       head.style.zIndex = 1;
       head.style.position = "absolute";
       imgContainer.appendChild(head);
@@ -194,6 +193,23 @@ function createHead() {
     }
   }
 }
+
+function createNewHead() {
+  const lastHead = headList[headList.length - 1];
+  const lastHeadRect = lastHead.getBoundingClientRect();
+  const newHead = document.createElement("img");
+  newHead.src = "img/whitebox.png";
+  newHead.alt = "snake";
+  newHead.style.top = `${lastHeadRect.top}px`;
+  newHead.style.left = `${lastHeadRect.left}px`;
+  newHead.style.height = "6vh";
+  newHead.style.width = "6vh";
+  newHead.style.zIndex = 1;
+  newHead.style.position = "absolute";
+  imgContainer.appendChild(newHead);
+  headList.push(newHead);
+}
+
 
 // Function to update the timer display
 function updateTimer() {
@@ -225,8 +241,8 @@ function generateRedBall() {
   ball = document.createElement("img");
   ball.src = "img/red.png";
   ball.alt = "ball";
-  ball.style.height = "20px";
-  ball.style.width = "20px";
+  ball.style.height = "4vh";
+  ball.style.width = "4vh";
 
   // to generate ball in ranfdom locations
   ballLocationX =
@@ -307,6 +323,44 @@ function move() {
  let currentTop = parseInt(currentHead.style.top);
   let currentLeft = parseInt(currentHead.style.left);
 
+
+  // the functions cheecks for self collision and collision with the border
+  if (checkSelfCollision()||currentTop <= 0 ||
+  currentTop >= imgContainer.clientHeight - currentHead.clientHeight ||
+  currentLeft <= 0 ||
+  currentLeft >= imgContainer.clientWidth - currentHead.clientWidth
+) {
+    {
+      isGameRunning = false;
+      pauseAudio(gameOverAudio);
+      playAudio(crashAudio);
+      if (!isMuted) {
+        setTimeout(function () {
+          window.location.href = "gameOver.html";
+        }, 2500);
+      } else {
+        window.location.href = "gameOver.html";
+      }
+    }
+  }
+  //to check collision with the ball
+  if (checkCollision()) {
+    pauseAudio(gameOverAudio);
+    playAudio(pointAudio);
+    score += 1;
+    document.getElementById("scorebtn").textContent = `Score: ${score}`;
+    localStorage.setItem("score", score);
+    localStorage.removeItem("ballLocationX");
+    localStorage.removeItem("ballLocationY");
+    generateRedBall();
+    snakeSpeed--;
+    headListLength++;
+    localStorage.setItem("headListLength", headListLength);
+    // createHead();
+    createNewHead();
+  }
+
+
   for (let i = headList.length - 1; i > 0; i--) {
     // Move each head to the position of the previous head
     headList[i].style.top = headList[i - 1].style.top;
@@ -341,41 +395,9 @@ function move() {
   localStorage.setItem("currentLeft", currentHead.style.left);
   localStorage.setItem("direction", direction);
 
-  // the functions cheecks for self collision and collision with the border
-  if (checkSelfCollision()||currentTop <= 0 ||
-  currentTop >= imgContainer.clientHeight - currentHead.clientHeight ||
-  currentLeft <= 0 ||
-  currentLeft >= imgContainer.clientWidth - currentHead.clientWidth
-) {
-    {
-      isGameRunning = false;
-      pauseAudio(gameOverAudio);
-      playAudio(crashAudio);
-      if (!isMuted) {
-        setTimeout(function () {
-          window.location.href = "gameOver.html";
-        }, 2500);
-      } else {
-        window.location.href = "gameOver.html";
-      }
-    }
-  }
-  //to check collision with the ball
-  if (checkCollision()) {
-    pauseAudio(gameOverAudio);
-    playAudio(pointAudio);
-    score += 1;
-    document.getElementById("scorebtn").textContent = `Score: ${score}`;
-    localStorage.setItem("score", score);
-    localStorage.removeItem("ballLocationX");
-    localStorage.removeItem("ballLocationY");
-    generateRedBall();
-    snakeSpeed--;
-    headListLength++;
-    localStorage.setItem("headListLength", headListLength);
-    createHead();
-  }
+
 }
+
 
 document.addEventListener("keydown", function (event) {
   if (isGameRunning) {
