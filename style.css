@@ -21,7 +21,7 @@ body {
   text-align: center;
 }
 
-#startPage-imgContainer {
+#startPage-imgContainer,#gameOver-imgContainer {
   justify-content: center;
   align-items: top;
   text-align: center;
@@ -49,14 +49,16 @@ body {
   top: 15rem;
 }
 
-#startPage-imgContainer #soundImg{
+#startPage-imgContainer #soundImg,
+#gameOver-imgContainer #soundImg {
   position: absolute;
   top: 0;
   right: 0;
   background-color: none;
-    width: 30px;
-    height: 20px;
+  width: 30px;
+  height: 20px;
 }
+
 
 .gameOver-buttons {
   position: absolute;
@@ -117,6 +119,17 @@ button:active {
     display: flex;
     position: relative;
     margin: 20% 10% 10% 10%;
+  }
+ .gameOver-buttons button{
+    margin-top: 8vh;
+
+  }
+ .gameOver-buttons .buttons {
+    position: relative;
+    /* top: 10px; */
+    display: flex;
+    flex-direction: column;
+    height: 10px;
   }
 }
 @media screen and (max-width: 200px) {
