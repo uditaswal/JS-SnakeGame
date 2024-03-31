@@ -180,7 +180,7 @@ function createHead() {
   if (headList.length === 0) {
     for (let i = 0; i < headListLength; i++) {
       let head = document.createElement("img");
-      head.src = "img/whitebox.png";
+      head.src = "img/blackbox.png";
       head.alt = "snake";
       head.style.top = 5 + "px";
       head.style.left = 5 + "px";
@@ -198,7 +198,7 @@ function createNewHead() {
   const lastHead = headList[headList.length - 1];
   const lastHeadRect = lastHead.getBoundingClientRect();
   const newHead = document.createElement("img");
-  newHead.src = "img/whitebox.png";
+  newHead.src = "img/blackbox.png";
   newHead.alt = "snake";
   newHead.style.top = `${lastHeadRect.top}px`;
   newHead.style.left = `${lastHeadRect.left}px`;
