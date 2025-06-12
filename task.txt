@@ -1,0 +1,18 @@
+/*
+Bugs
+Remove head when it reloading the page
+timer going up in pause page
+
+Notes:
+
+Completed
+Need to upload the project to github
+Need to host it on a site
+Need to make gameover of snake eats itself
+and maintain high score for each profile
+Need to add music
+Need to maintain the snake's location when going from pausePage to gamePage
+Need  to maintain snake's direction when going from pausePage to gamePage
+Need to maintain ball's location when going from pausePage to gamePage
+Need to maintain snake size when going from pausePage to gamePage
+*/

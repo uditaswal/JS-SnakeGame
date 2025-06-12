@@ -58,7 +58,7 @@ body {
 
 /* Title styling */
 .Title {
-  color: #fff;
+  color: #000000;
   font-size: clamp(2rem, 8vw, 4rem);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin-bottom: 2rem;
