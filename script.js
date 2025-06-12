@@ -84,8 +84,9 @@ function updateMuteButtonImg(isMuted) {
 // initilizing variables
 let imgContainer = document.getElementById("imgContainer");
 let ball;
-let step = 5;
-let snakeSpeed = 10; // in milliseconds
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+let step = isMobile ? 7 : 5;
+let snakeSpeed = isMobile ? 35 :15;
 let score = 0;
 let direction;
 let gameInterval;
@@ -503,7 +504,7 @@ function handleTouchStart(event) {
 }
 
 // Add touch event listeners
-document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchstart', handleTouchStart, { passive: false });
 
 
 // Page specifics:

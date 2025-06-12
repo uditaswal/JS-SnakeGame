@@ -1,18 +1,42 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background-color: #9bba5a;
-  font-family: sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  overflow: hidden;
+  background: linear-gradient(135deg, #9bba5a 0%, #7a9943 100%);
   font-family: "Madimi One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-in;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Game container */
 .imgContainer {
   border: solid 4px rgba(0, 0, 0, 0.75);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   width: 80rem;
   height: 30rem;
   display: flex;
@@ -21,147 +45,435 @@ body {
   text-align: center;
 }
 
-#startPage-imgContainer,#gameOver-imgContainer {
-  justify-content: center;
-  align-items: top;
-  text-align: center;
-  font-size: 5vh;
-}
-
+/* Page-specific containers */
+#startPage-imgContainer,
+#gameOver-imgContainer,
 #pausePage-imgContainer {
   justify-content: center;
-  align-items: top;
-  text-align: center;
-  text-align: center;
-  font-size: 5vh;
-}
-
-.buttons {
-  display: flex; /* Use flexbox to arrange items in a row */
-  gap: 10px; /* Add a small gap between buttons */
-  align-items: center; /* Center items vertically */
-  position: absolute;
-  top: 10px;
-}
-
-.startPage-buttons {
-  position: absolute;
-  top: 15rem;
-}
-
-#startPage-imgContainer #soundImg,
-#gameOver-imgContainer #soundImg {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: none;
-  width: 30px;
-  height: 20px;
-}
-
-
-.gameOver-buttons {
-  position: absolute;
-  top: 10rem;
-}
-
-.startPage-btn,
-.pausePage-btn {
-  width: 15rem;
-  height: 3rem;
-  font-family: "Madimi One", sans-serif;
-  font-weight: 400;
-  font-size: 15px;
-}
-
-.Title {
-  text-align: center;
-  word-wrap: break-word;
-  justify-content: center;
   align-items: center;
-}
-
-.pausePage-buttons {
-  display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  margin-left: 10%;
-  margin-right: 10%;
+  text-align: center;
+  padding: 2rem;
 }
 
+/* Title styling */
+.Title {
+  color: #fff;
+  font-size: clamp(2rem, 8vw, 4rem);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Button styling */
 button {
   color: white;
-  background-color: rgb(0, 0, 255);
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
   border: none;
-  padding: 10px;
-  border-radius: 20%;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-weight: 500;
+  font-family: inherit;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  min-width: 120px;
+  white-space: nowrap;
 }
 
 button:hover {
-  background-color: rgb(0, 153, 255);
+  background: linear-gradient(135deg, #339cff 0%, #007bff 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
 }
 
 button:active {
-  font-weight: bold;
+  background: linear-gradient(135deg, #0056b3 0%, #003d80 100%);
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
 }
 
-#soundImg{
-  background-color: none;
-  width: 30px;
-  height: auto;
+button:focus {
+  outline: 2px solid #339cff;
+  outline-offset: 2px;
 }
 
-@media screen and (max-width: 400px) {
+/* Game controls - UPDATED FOR CENTERING */
+.buttons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  width: auto;
+  max-width: calc(100% - 100px); /* Leave space for mute button */
+}
+
+/* Start page buttons */
+.startPage-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+
+.startPage-btn {
+  width: min(300px, 80vw);
+  height: 60px;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+}
+
+/* Game over buttons */
+.gameOver-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.gameOver-btn {
+  width: 100%;
+  min-height: 55px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+
+/* Remove spacing from br tags in game over buttons */
+.gameOver-buttons br {
+  display: none;
+}
+
+/* Pause page buttons */
+.pausePage-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.pausePage-btn {
+  width: min(300px, 80vw);
+  min-height: 50px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+/* Sound button - UPDATED POSITIONING */
+#soundImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  object-fit: contain;
+  position: relative;
+  /* top: 10px; */
+  right: 10px;
+  z-index: 20;
+}
+
+#soundImg:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#soundImg:active {
+  transform: scale(0.95);
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 0.5rem;
+  }
+
   .imgContainer {
-    border: solid 2px black;
-    width: 80rem;
+    border: solid 4px rgba(0, 0, 0, 0.75);
+    width: 90vw;
     height: 30rem;
     display: flex;
     position: relative;
-    margin: 20% 10% 10% 10%;
+    margin: 4rem auto;
+    text-align: center;
   }
- .gameOver-buttons button{
-    margin-top: 8vh;
 
-  }
- .gameOver-buttons .buttons {
-    position: relative;
-    /* top: 10px; */
-    display: flex;
-    flex-direction: column;
-    height: 10px;
-  }
-}
-@media screen and (max-width: 200px) {
-  .imgContainer {
-    border: solid 2px black;
-    width: 80rem;
-    height: 30rem;
-    display: flex;
-    position: relative;
-    margin: 120% 10% 10% 10%;
-  }
   .buttons {
     position: absolute;
     top: 10px;
-    display: flex;
-    flex-direction: column;
-    height: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: calc(100% - 80px);
+    padding: 0.5rem;
+  }
+
+  .buttons button {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    min-width: auto;
+  }
+
+  #startPage-imgContainer,
+  #gameOver-imgContainer,
+  #pausePage-imgContainer {
+    padding: 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .gameOver-buttons {
+    gap: 1rem;
+    max-width: 90%;
+    padding: 0 0.5rem;
+  }
+
+  .gameOver-btn {
+    min-height: 50px;
+    font-size: clamp(0.95rem, 4vw, 1.1rem);
+    padding: 14px 16px;
+  }
+
+  .Title {
+    margin-bottom: 2rem;
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+  }
+
+  #soundImg {
+    width: 35px;
+    height: 35px;
+    top: 5px;
+    right: 5px;
   }
 }
-@media screen and (max-width: 130px) {
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
   .imgContainer {
-    border: solid 2px black;
-    width: 80rem;
-    height: 30rem;
+    border: solid 4px rgba(0, 0, 0, 0.75);
+    width: 92vw;
+    height: 32rem;
     display: flex;
     position: relative;
-    margin: 300% 10% 10% 10%;
+    margin: 3rem auto;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
   }
+
   .buttons {
+    gap: 5px;
+    padding: 0.4rem;
+    max-width: calc(100% - 60px);
+  }
+
+  .buttons button {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+  }
+
+  .gameOver-buttons {
+    gap: 0.8rem;
+    max-width: 95%;
+    padding: 0 0.25rem;
+  }
+
+  .gameOver-btn {
+    min-height: 48px;
+    font-size: clamp(0.9rem, 4.5vw, 1rem);
+    padding: 12px 14px;
+    border-radius: 8px;
+  }
+
+  .startPage-btn,
+  .pausePage-btn {
+    font-size: 0.9rem;
+    min-height: 45px;
+  }
+
+  .Title {
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    margin-bottom: 1.5rem;
+  }
+
+  #soundImg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Landscape orientation */
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  html,
+  body {
+    overscroll-behavior: none;
+    touch-action: none;
+  }
+
+  body {
+    margin: 0;
+    padding: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .imgContainer {
+    width: 95vw;
+    height: 60vh;
+    max-width: 100%;
+    margin: 0.5rem auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .buttons {
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 8px;
+    top: 15px;
+    max-width: calc(100% - 80px);
+  }
+
+  .buttons button {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+
+  .gameOver-buttons {
     position: absolute;
-    top: 10px;
-    display: flex;
-    flex-direction: column;
+    top: 40%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .gameOver-buttons button {
+    width: auto;
+    height: auto;
+    font-size: 1.2rem;
+  }
+
+  .pausePage-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .Title {
+    position: absolute;
+    top: 1px;
+    font-size: 10vh;
+  }
+
+  #soundImg {
+    width: 30px;
+    height: 30px;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+/* Very small screens */
+@media screen and (max-width: 320px) {
+  .imgContainer {
+    border-width: 1px;
+    margin: 0.5rem auto;
+  }
+
+  .Title {
+    font-size: 1.5rem;
+  }
+
+  button {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+
+  .buttons {
+    max-width: calc(100% - 50px);
+  }
+
+  .buttons button {
+    font-size: 0.6rem;
+    padding: 4px 8px;
+  }
+}
+
+/* High DPI displays */
+@media screen and (min-resolution: 2dppx) {
+  .imgContainer {
+    border-width: 2px;
+  }
+  
+  #soundImg {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+  
+  button {
+    transition: none;
+  }
+  
+  button:hover {
+    transform: none;
+  }
+  
+  #soundImg {
+    transition: none;
+  }
+  
+  #soundImg:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .imgContainer {
+    border-color: #000;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
+  .Title {
+    color: #000;
+    text-shadow: none;
+  }
+  
+  button {
+    border: 2px solid #000;
   }
 }
