@@ -3,39 +3,48 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Play the classic Snake Game with modern UI and mobile support" />
+  <meta name="theme-color" content="#6BAE3F" />
+  <link rel="stylesheet" href="style.css?v=5" />
   <link rel="icon" href="img/thumbnail.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Madimi+One:wght@400&display=swap" rel="stylesheet" />
   <script src="script.js" defer></script>
-  <title>Snake Game</title>
+  <title>Snake Game - Game Over</title>
 </head>
 
 <body>
-  <div class="imgContainer" id="gameOver-imgContainer">
-
-    <h1 class="Title">Game Over</h1>
-    <div class="gameOver-buttons">
-      <button type="button" class="gameOver-btn" id="scorebtn">
-        Score: 0
-      </button>
-      <button type="button" class="gameOver-btn" id="highScorebtn">
-        High Score: 0
-      </button>
-      <button type="button" class="gameOver-btn" id="timer">
-        Timer: 0 : 00 : 00
-      </button>
-      <a href="gamePage.html"><button type="button" class="gameOver-btn" id="resetbtn" onclick="resetGame()">
-          Restart
-        </button>
-      </a>
-
-    </div>
+  <div class="page-wrapper">
+    <main class="page-content">
+      <div class="imgContainer" id="gameOver-imgContainer">
+        <h1 class="Title">Game Over</h1>
+        <div class="gameOver-buttons">
+          <button type="button" class="gameOver-btn" id="scorebtn">
+            Score: 0
+          </button>
+          <button type="button" class="gameOver-btn" id="highScorebtn">
+            High Score: 0
+          </button>
+          <button type="button" class="gameOver-btn" id="timer">
+            Timer: 0 : 00 : 00
+          </button>
+          <a href="gamePage.html"><button type="button" class="gameOver-btn" id="resetbtn" onclick="resetGame()">
+              Restart
+            </button>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer class="app-footer">
+      <p>&copy; 2025 Snake Game &bull; Built by Udit Aswal</p>
+      <div class="footer-links">
+        <a href="https://portfolio-uditaswal.vercel.app/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+        <a href="https://github.com/uditaswal" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </footer>
   </div>
 </body>
-
-
 
 </html>

@@ -3,29 +3,39 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Play the classic Snake Game with modern UI and mobile support" />
+  <meta name="theme-color" content="#6BAE3F" />
+  <link rel="stylesheet" href="style.css?v=5" />
   <link rel="icon" href="img/thumbnail.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link hr ef="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Madimi+One:wght@400&display=swap" rel="stylesheet" />
   <script src="script.js" defer></script>
-  <title>Snake Game</title>
+  <title>Snake Game - Modern & Responsive</title>
 </head>
 
 <body>
-  <div class="imgContainer" id="startPage-imgContainer">
-    <!-- <img id="soundImg" src="img/mute-button.png" onclick="gameAudio.pause()"  alt="" /> -->
-
-    <h1 class="Title">Snake Game</h1>
-    <div class="startPage-buttons">
-      <a href="gamePage.html">
-        <button type="button" class="startPage-btn" id="gamebtn" onclick="resetGame()">
-          Start
-        </button>
-      </a>
-
-    </div>
+  <div class="page-wrapper">
+    <main class="page-content">
+      <div class="imgContainer" id="startPage-imgContainer">
+        <h1 class="Title">Snake Game</h1>
+        <div class="startPage-buttons">
+          <a href="gamePage.html">
+            <button type="button" class="startPage-btn" id="gamebtn" onclick="resetGame()">
+              Start Game
+            </button>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer class="app-footer">
+      <p>&copy; 2025 Snake Game &bull; Built by Udit Aswal</p>
+      <div class="footer-links">
+        <a href="https://portfolio-uditaswal.vercel.app/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+        <a href="https://github.com/uditaswal" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </footer>
   </div>
 </body>
 
